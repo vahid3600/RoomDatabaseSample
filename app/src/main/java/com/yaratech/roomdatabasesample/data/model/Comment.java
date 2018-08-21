@@ -1,10 +1,9 @@
-package com.yaratech.roomdatabasesample.model;
+package com.yaratech.roomdatabasesample.data.model;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
 
 /**
  * Created by Vah on 8/20/2018.

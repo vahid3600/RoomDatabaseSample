@@ -8,12 +8,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.yaratech.roomdatabasesample.R;
-import com.yaratech.roomdatabasesample.database.AppDatabase;
-import com.yaratech.roomdatabasesample.model.User;
+import com.yaratech.roomdatabasesample.data.sourse.database.AppDatabase;
 import com.yaratech.roomdatabasesample.ui.comment.CommentFragment;
 import com.yaratech.roomdatabasesample.ui.post2.PostFragment2;
 import com.yaratech.roomdatabasesample.ui.post1.PostFragment1;
@@ -28,20 +26,24 @@ import static com.yaratech.roomdatabasesample.ui.user1.UserFragment1.USER_TAG1;
 import static com.yaratech.roomdatabasesample.ui.user2.UserFragment2.USER_TAG2;
 
 public class MainActivity extends AppCompatActivity implements SetOnClickListener {
-    AppDatabase appDatabase;
+    MainContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        presenter = new MainPresenter(getApplicationContext());
+
         SharedPreferences ADD_DATABASE = getSharedPreferences("DATABASE", MODE_PRIVATE);
-        appDatabase = AppDatabase.getAppDatabase(this);
+
 
         if (ADD_DATABASE.getBoolean("DATABASE", true)) {
-            DataGenerator.with(appDatabase).generateUser();
-            DataGenerator.with(appDatabase).generatePost();
-            DataGenerator.with(appDatabase).generateComment();
+
+            presenter.generateUser();
+            presenter.generatePost();
+            presenter.generateComment();
+
             ADD_DATABASE.edit().putBoolean("DATABASE", false).apply();
         }
 
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements SetOnClickListene
                                 setFragment(
                                         R.id.frame,
                                         getSupportFragmentManager(),
-                                        UserFragment1.newInstance(appDatabase.databaseAccess().loadUser()),
+                                        UserFragment1.newInstance(presenter.loadUser()),
                                         USER_TAG1,
                                         false);
                                 break;
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements SetOnClickListene
                                 setFragment(
                                         R.id.frame,
                                         getSupportFragmentManager(),
-                                        UserFragment2.newInstance(appDatabase.databaseAccess().loadUser()),
+                                        UserFragment2.newInstance(presenter.loadUser()),
                                         USER_TAG2,
                                         false);
                                 break;
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements SetOnClickListene
                                 setFragment(
                                         R.id.frame,
                                         getSupportFragmentManager(),
-                                        PostFragment1.newInstance(appDatabase.databaseAccess().loadPost()),
+                                        PostFragment1.newInstance(presenter.loadPost()),
                                         POST1_TAG,
                                         false);
                                 break;
@@ -82,8 +84,8 @@ public class MainActivity extends AppCompatActivity implements SetOnClickListene
                                 setFragment(
                                         R.id.frame,
                                         getSupportFragmentManager(),
-                                        PostFragment2.newInstance(appDatabase.databaseAccess().loadPost()),
-                                        POST1_TAG,
+                                        PostFragment2.newInstance(presenter.loadPost()),
+                                        POST2_TAG,
                                         false);
                                 break;
 
@@ -91,8 +93,8 @@ public class MainActivity extends AppCompatActivity implements SetOnClickListene
                                 setFragment(
                                         R.id.frame,
                                         getSupportFragmentManager(),
-                                        CommentFragment.newInstance(appDatabase.databaseAccess().loadComment()),
-                                        POST2_TAG,
+                                        CommentFragment.newInstance(presenter.loadComment()),
+                                        COMMENT_TAG,
                                         false);
                                 break;
                         }
@@ -117,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements SetOnClickListene
         setFragment(
                 R.id.frame,
                 getSupportFragmentManager(),
-                CommentFragment.newInstance(appDatabase.databaseAccess().fetchCommentByUserId(id)),
+                CommentFragment.newInstance(presenter.fetchCommentByUserId(id)),
                 COMMENT_TAG,
                 true);
     }
@@ -127,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements SetOnClickListene
         setFragment(
                 R.id.frame,
                 getSupportFragmentManager(),
-                PostFragment1.newInstance(appDatabase.databaseAccess().fetchPostByUserId(id)),
+                PostFragment1.newInstance(presenter.fetchPostByUserId(id)),
                 POST1_TAG,
                 true);
     }
@@ -137,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements SetOnClickListene
         setFragment(
                 R.id.frame,
                 getSupportFragmentManager(),
-                CommentFragment.newInstance(appDatabase.databaseAccess().fetchCommentByPostId(id)),
+                CommentFragment.newInstance(presenter.fetchCommentByPostId(id)),
                 COMMENT_TAG,
                 true);
     }
@@ -147,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements SetOnClickListene
         setFragment(
                 R.id.frame,
                 getSupportFragmentManager(),
-                UserFragment1.newInstance(appDatabase.databaseAccess().fetchUserByPostId(id)),
+                UserFragment1.newInstance(presenter.fetchUserByPostId(id)),
                 USER_TAG1,
                 true);
     }

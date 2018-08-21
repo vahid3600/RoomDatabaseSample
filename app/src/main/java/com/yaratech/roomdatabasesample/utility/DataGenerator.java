@@ -1,9 +1,9 @@
 package com.yaratech.roomdatabasesample.utility;
 
-import com.yaratech.roomdatabasesample.database.AppDatabase;
-import com.yaratech.roomdatabasesample.model.Comment;
-import com.yaratech.roomdatabasesample.model.Post;
-import com.yaratech.roomdatabasesample.model.User;
+import com.yaratech.roomdatabasesample.data.sourse.database.AppDatabase;
+import com.yaratech.roomdatabasesample.data.model.Comment;
+import com.yaratech.roomdatabasesample.data.model.Post;
+import com.yaratech.roomdatabasesample.data.model.User;
 
 /**
  * Created by Vah on 8/20/2018.

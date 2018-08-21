@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.yaratech.roomdatabasesample.R;
-import com.yaratech.roomdatabasesample.model.User;
+import com.yaratech.roomdatabasesample.data.model.User;
 import com.yaratech.roomdatabasesample.ui.SetOnClickListener;
 
 import java.util.ArrayList;

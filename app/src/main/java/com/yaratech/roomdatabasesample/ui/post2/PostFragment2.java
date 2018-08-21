@@ -13,8 +13,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.yaratech.roomdatabasesample.R;
-import com.yaratech.roomdatabasesample.model.Post;
-import com.yaratech.roomdatabasesample.ui.post1.PostRecyclerViewAdapter1;
+import com.yaratech.roomdatabasesample.data.model.Post;
 
 import java.util.ArrayList;
 import java.util.Arrays;

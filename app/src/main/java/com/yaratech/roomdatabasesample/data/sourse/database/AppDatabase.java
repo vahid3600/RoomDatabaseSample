@@ -1,18 +1,13 @@
-package com.yaratech.roomdatabasesample.database;
+package com.yaratech.roomdatabasesample.data.sourse.database;
 
-import android.arch.persistence.db.SupportSQLiteOpenHelper;
 import android.arch.persistence.room.Database;
-import android.arch.persistence.room.DatabaseConfiguration;
-import android.arch.persistence.room.InvalidationTracker;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
-import android.util.Log;
 
-import com.yaratech.roomdatabasesample.DatabaseAccess;
-import com.yaratech.roomdatabasesample.model.Comment;
-import com.yaratech.roomdatabasesample.model.Post;
-import com.yaratech.roomdatabasesample.model.User;
+import com.yaratech.roomdatabasesample.data.model.Comment;
+import com.yaratech.roomdatabasesample.data.model.Post;
+import com.yaratech.roomdatabasesample.data.model.User;
 
 /**
  * Created by Vah on 8/20/2018.

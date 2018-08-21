@@ -13,8 +13,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.yaratech.roomdatabasesample.R;
-import com.yaratech.roomdatabasesample.model.Comment;
-import com.yaratech.roomdatabasesample.model.Post;
+import com.yaratech.roomdatabasesample.data.model.Comment;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,15 +1,12 @@
-package com.yaratech.roomdatabasesample;
+package com.yaratech.roomdatabasesample.data.sourse.database;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
-import com.yaratech.roomdatabasesample.model.Comment;
-import com.yaratech.roomdatabasesample.model.Post;
-import com.yaratech.roomdatabasesample.model.User;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.yaratech.roomdatabasesample.data.model.Comment;
+import com.yaratech.roomdatabasesample.data.model.Post;
+import com.yaratech.roomdatabasesample.data.model.User;
 
 /**
  * Created by Vah on 8/20/2018.
@@ -27,14 +24,12 @@ public interface DatabaseAccess{
     @Insert
     void insertComment(Comment... comment);
 
-    @Query("SELECT * " +
+    @Query("SELECT Comment.* " +
             "FROM Comment " +
-            "JOIN User " +
-            "ON Comment.userId = User.id " +
-            "WHERE User.id = :userId")
+            "WHERE Comment.userId = :userId")
     Comment[] fetchCommentByUserId(int userId);
 
-    @Query("SELECT * " +
+    @Query("SELECT Post.* " +
             "FROM Post " +
             "JOIN Comment " +
             "ON Post.id = Comment.postId " +
@@ -43,14 +38,12 @@ public interface DatabaseAccess{
             "WHERE User.id = :userId")
     Post[] fetchPostByUserId(int userId);
 
-    @Query("SELECT * " +
+    @Query("SELECT Comment.* " +
             "FROM Comment " +
-            "JOIN Post " +
-            "ON Comment.postId = Post.id " +
-            "WHERE Post.id = :postId")
+            "WHERE Comment.postId = :postId")
     Comment[] fetchCommentByPostId(int postId);
 
-    @Query("SELECT * " +
+    @Query("SELECT User.* " +
             "FROM User " +
             "JOIN Comment " +
             "ON User.id = Comment.userId " +
