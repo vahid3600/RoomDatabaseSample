@@ -56,22 +56,23 @@ public class DataGenerator {
 
         Post[] posts = new Post[6];
 
-        posts[0] = postInstance(1, "gol", "gol che khoobe", "");
-        posts[1] = postInstance(2, "bolbol", "bolbolam khoobe", "");
-        posts[2] = postInstance(3, "derakht", "unam khoobe", "");
-        posts[3] = postInstance(4, "doshman", "in na ziad", "");
-        posts[4] = postInstance(5, "yaratube", "kheiliam awli", "");
-        posts[5] = postInstance(6, "gorbe", "nice", "");
+        posts[0] = postInstance(1, "gol", "gol che khoobe", "", 1);
+        posts[1] = postInstance(2, "bolbol", "bolbolam khoobe", "", 3);
+        posts[2] = postInstance(3, "derakht", "unam khoobe", "", 4);
+        posts[3] = postInstance(4, "doshman", "in na ziad", "", 1);
+        posts[4] = postInstance(5, "yaratube", "kheiliam awli", "", 6);
+        posts[5] = postInstance(6, "gorbe", "nice", "", 2);
 
         dataBase.databaseAccess().insertPost(posts);
     }
 
-    private Post postInstance(int id, String title, String description, String avatar) {
+    private Post postInstance(int id, String title, String description, String avatar, int userId) {
         Post post = new Post();
         post.setId(id);
         post.setTitle(title);
         post.setDescription(description);
         post.setAvatar(avatar);
+        post.setUserId(userId);
         return post;
     }
 

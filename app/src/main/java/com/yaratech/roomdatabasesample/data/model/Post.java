@@ -16,7 +16,29 @@ public class Post implements Parcelable{
     private int id;
     private String title;
     private String description;
-    private String avatar;
+    private String image;
+    private int userId;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public int getUserId() {
+        return userId;
+
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public static Creator<Post> getCREATOR() {
+        return CREATOR;
+    }
 
     public Post(){}
 
@@ -24,7 +46,7 @@ public class Post implements Parcelable{
         id = in.readInt();
         title = in.readString();
         description = in.readString();
-        avatar = in.readString();
+        image = in.readString();
     }
 
     public static final Creator<Post> CREATOR = new Creator<Post>() {
@@ -64,11 +86,11 @@ public class Post implements Parcelable{
     }
 
     public String getAvatar() {
-        return avatar;
+        return image;
     }
 
     public void setAvatar(String avatar) {
-        this.avatar = avatar;
+        this.image = avatar;
     }
 
     @Override
@@ -81,6 +103,6 @@ public class Post implements Parcelable{
         dest.writeInt(id);
         dest.writeString(title);
         dest.writeString(description);
-        dest.writeString(avatar);
+        dest.writeString(image);
     }
 }

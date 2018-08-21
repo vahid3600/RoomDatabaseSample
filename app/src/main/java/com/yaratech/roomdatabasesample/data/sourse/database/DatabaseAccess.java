@@ -52,6 +52,11 @@ public interface DatabaseAccess{
             "WHERE Post.id = :postId")
     User[] fetchUserByPostId(int postId);
 
+    @Query("SELECT Count(*) " +
+            "FROM Post " +
+            "WHERE Post.userId = :userId")
+    int fetchCountOfPostByUserId(int userId);
+
     @Query("SELECT * " +
             "FROM User")
     User[] loadUser();

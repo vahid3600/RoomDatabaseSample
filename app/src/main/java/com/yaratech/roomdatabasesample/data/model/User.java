@@ -17,6 +17,19 @@ public class User implements Parcelable {
     private String name;
     private String familyName;
     private int nationalCode;
+    private String avatar;
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public static Creator<User> getCREATOR() {
+        return CREATOR;
+    }
 
     public User(){}
 
