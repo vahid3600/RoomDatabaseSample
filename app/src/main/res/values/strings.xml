@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">RoomDatabaseSample</string>
+    <string name="query_1">User 1</string>
+    <string name="query_2">User 2</string>
+    <string name="query_3">Post 1</string>
+    <string name="query_4">Post 2</string>
+    <string name="query_5">Comment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="id">id:</string>
+    <string name="name">name:</string>
+    <string name="family">family:</string>
+    <string name="national_code">national code:</string>
+    <string name="title">title:</string>
+    <string name="description">description:</string>
+    <string name="comment">comment:</string>
+</resources>
